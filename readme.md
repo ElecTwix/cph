@@ -44,7 +44,7 @@ Unfortunately, Turkish Language is a requirement for the project which caused ta
 - Foreign Keys
 - Unique Keys
 
-![diagram](https://raw.githubusercontent.com/ElecTwix/cph/main/diagram.png)
+![diagram](https://raw.githubusercontent.com/ElecTwix/cph/main/diagram.webp)
 
 ## Installation
 
