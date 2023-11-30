@@ -1,0 +1,84 @@
+CREATE TABLE Kampus (
+  KampusID INT IDENTITY(1,1) NOT NULL,
+  KampusAdi VARCHAR(50) NOT NULL,
+  Lokasyon VARCHAR(50) NOT NULL,
+  CONSTRAINT PK_Kampus PRIMARY KEY (KampusID)
+);
+
+CREATE TABLE Danisman (
+  DanismanID INT IDENTITY(1,1) NOT NULL,
+  BolumID INT NOT NULL,
+  PersonalID INT NOT NULL,
+  CONSTRAINT PK_Danisman PRIMARY KEY (DanismanID),
+  CONSTRAINT FK_Danisman_Bolum FOREIGN KEY (BolumID) REFERENCES Bolum (BolumID),
+  CONSTRAINT FK_Danisman_Personal FOREIGN KEY (PersonalID) REFERENCES Personel (PersonalID)
+);
+
+CREATE TABLE Yemekhane (
+  YemekhaneID INT IDENTITY(1,1) NOT NULL,
+  KampusID INT NOT NULL,
+  CONSTRAINT PK_Yemekhane PRIMARY KEY (YemekhaneID),
+  CONSTRAINT FK_Yemekhane_Kampus FOREIGN KEY (KampusID) REFERENCES Kampus (KampusID)
+);
+
+CREATE TABLE Yemek (
+  YemekID INT IDENTITY(1,1) NOT NULL,
+  YemekhaneID INT NOT NULL,
+  AnaYemek VARCHAR(50) NOT NULL,
+  Corba VARCHAR(50) NOT NULL,
+  GunlukEkstra VARCHAR(50) NOT NULL,
+  CONSTRAINT PK_Yemek PRIMARY KEY (YemekID),
+  CONSTRAINT FK_Yemek_Yemekhane FOREIGN KEY (YemekhaneID) REFERENCES Yemekhane (YemekhaneID)
+);
+
+CREATE TABLE Siparis (
+  SiparisID INT IDENTITY(1,1) NOT NULL,
+  OgrenciNo INT NOT NULL,
+  YemekID INT NOT NULL,
+  CONSTRAINT PK_Siparis PRIMARY KEY (SiparisID),
+  CONSTRAINT FK_Siparis_Ogrenci FOREIGN KEY (OgrenciNo) REFERENCES OgrenciBilgi (OgrNo),
+  CONSTRAINT FK_Siparis_Yemek FOREIGN KEY (YemekID) REFERENCES Yemek (YemekID)
+);
+
+CREATE TABLE Bolum (
+  BolumID INT IDENTITY(1,1) NOT NULL,
+  BolumAdi VARCHAR(50) NOT NULL,
+  KampusID INT NOT NULL,
+  CONSTRAINT PK_Bolum PRIMARY KEY (BolumID),
+  CONSTRAINT FK_Bolum_Kampus FOREIGN KEY (KampusID) REFERENCES Kampus (KampusID)
+);
+
+CREATE TABLE Personel (
+  PersonalID INT IDENTITY(1,1) NOT NULL,
+  Ad VARCHAR(50) NOT NULL,
+  Soyad VARCHAR(50) NOT NULL,
+  Maas INT NOT NULL,
+  Pozisyon VARCHAR(50) NOT NULL,
+  KampusID INT NOT NULL,
+  CONSTRAINT PK_Personel PRIMARY KEY (PersonalID),
+  CONSTRAINT FK_Personel_Kampus FOREIGN KEY (KampusID) REFERENCES Kampus (KampusID)
+);
+
+CREATE TABLE OgretimGorevlisi (
+  GorevliID INT IDENTITY(1,1) NOT NULL,
+  DersID INT NOT NULL,
+  PersonalID INT NOT NULL,
+  CONSTRAINT PK_OgretimGorevlisi PRIMARY KEY (GorevliID),
+  CONSTRAINT FK_OgretimGorevlisi_Ders FOREIGN KEY (DersID) REFERENCES Dersler (DersID),
+  CONSTRAINT FK_OgretimGorevlisi_Personal FOREIGN KEY (PersonalID) REFERENCES Personel (PersonalID)
+);
+
+CREATE TABLE OgrenciBilgi (
+  OgrNo INT IDENTITY(1,1) NOT NULL,
+  OgrAdi VARCHAR(50) NOT NULL,
+  OgrSoyadi VARCHAR(50) NOT NULL,
+  BolumID INT NOT NULL,
+  OgrenciDogumTarihi DATE NOT NULL,
+  DevamID INT NOT NULL,
+  DanismanID INT NOT NULL,
+  KayitID INT NOT NULL,
+  CONSTRAINT PK_OgrenciBilgi PRIMARY KEY (OgrNo),
+  CONSTRAINT FK_OgrenciBilgi_Bolum FOREIGN KEY (BolumID) REFERENCES Bolum (BolumID),
+  CONSTRAINT FK_OgrenciBilgi_Danisman FOREIGN KEY (DanismanID) REFERENCES Danisman (DanismanID)
+);
+
