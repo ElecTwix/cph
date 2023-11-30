@@ -1,7 +1,8 @@
 This project has been prepared for the subject of **Database Design** of the degree of **Computer Programming** of the University of Ege, Turkey.
 
 # Project Name: **Database Design for a University**
-## Requirements that given by the instructor:
+## Requirements for HW:
+General:
 - A student can have more than one meal.
 - There can be more than one department in a campus.
 - There can be more than one cafeteria in a campus.
@@ -26,6 +27,23 @@ This project has been prepared for the subject of **Database Design** of the deg
 - A course can only be given by the teaching assistant of that course.
 - A student can only register for courses in the same campus.
 
+ -----
+
+Unfortunately, Turkish Language is a requirement for the project which caused table names and column names to be in Turkish.
+
+
+## Project Standards
+- Camel Case Naming Convention
+- Ascii table characters
+
+## Project Contains
+- Joint Tables
+- Many-to-Many Relationships
+- Many-to-One Relationships
+- One-to-One Relationships
+- Foreign Keys
+- Unique Keys
+
 ![diagram](https://raw.githubusercontent.com/ElecTwix/cph/main/diagram.png)
 
 ## Installation
@@ -34,7 +52,15 @@ This project has been prepared for the subject of **Database Design** of the deg
 
 2. Create a database named "University".
 
-3. Execute the Provided SQL Query.
+
+3. Create Tables run script or execute the provided SQL Query.
+
+- 3A. Execute Script inside psql
+```bash
+\i -d $DataBaseName -a -f init.sql
+```
+
+- 3B. Execute the Provided SQL Query.
 
 ```sql
 ``CREATE TABLE Kampus (
