@@ -26,7 +26,7 @@ This project has been prepared for the subject of **Database Design** of the deg
 - A course can only be given by the teaching assistant of that course.
 - A student can only register for courses in the same campus.
 
-![diagram](https://gist.github.com/assets/51170038/0cbea88c-8274-4f21-a1e2-a7f969f476ff)
+![diagram](https://raw.githubusercontent.com/ElecTwix/cph/main/diagram.png)
 
 ## Installation
 
