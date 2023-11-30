@@ -63,7 +63,7 @@ Unfortunately, Turkish Language is a requirement for the project which caused ta
 - 3B. Execute the Provided SQL Query.
 
 ```sql
-``CREATE TABLE Kampus (
+CREATE TABLE Kampus (
   KampusID INT IDENTITY(1,1) NOT NULL,
   KampusAdi VARCHAR(50) NOT NULL,
   Lokasyon VARCHAR(50) NOT NULL,
